@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: db
+  username: myuser
+  password: mypassword
+  pool: 5
+
+development:
+  <<: *default
+  database: extensive_reading_api_development
+
+test:
+  <<: *default
+  database: extensive_reading_api_test
+
+production:
+  <<: *default
+  database: extensive_reading_api_production
+  username: extensive_reading_api
+  password: <%= ENV['EXTENSIVE_READING_API_DATABASE_PASSWORD'] %>
